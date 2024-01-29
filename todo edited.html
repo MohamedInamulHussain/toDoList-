@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('image/bg.jpg');
+            image-resolution: from-image;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.8);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>ToDoList</h1>
+    <input value="dress" id="taskInput">
+    <button onclick="add()">Add</button>
+    <ul id="taskList">
+        <!-- tasks will be added dynamically here -->
+    </ul>
+</div>
+
+<script>
+    var taskList = document.getElementById("taskList");
+    var taskInput = document.getElementById("taskInput");
+
+    function add() {
+        var taskValue = taskInput.value;
+        if (taskValue.trim() !== "") {
+            var li = document.createElement("li");
+            li.innerHTML = taskValue + '<button onclick="del(event)">delete</button>';
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+    }
+
+    function del(event) {
+        event.target.parentElement.remove();
+    }
+</script>
+
+</body>
+</html>
